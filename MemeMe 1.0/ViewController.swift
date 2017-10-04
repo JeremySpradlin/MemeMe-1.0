@@ -7,17 +7,40 @@
 //
 
 import UIKit
+import AVFoundation
+import Photos
 
-class ViewController: UIViewController {
 
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    @IBOutlet weak var imagePickerView: UIImageView!
+
+        
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
     }
+    
+    
+    //Action for when the 'pick' button is selected by the user
+    @IBAction func pickAnImage(_ sender: Any) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.modalPresentationStyle = .popover
+        self.present(imagePicker, animated: true, completion: nil)
+    }
+    
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    
+    
+    
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
+        let image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        imagePickerView.image = image
+        print("Inside imagePickerController")
+        dismiss(animated: true, completion: nil)
+        
     }
 
 
