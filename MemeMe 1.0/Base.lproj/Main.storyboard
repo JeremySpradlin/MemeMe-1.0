@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ETY-ma-lrP">
-                                <rect key="frame" x="67" y="223.5" width="240" height="240"/>
+                                <rect key="frame" x="67.5" y="223.5" width="240" height="240"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="240" id="H4x-VP-E1Z"/>
                                     <constraint firstAttribute="width" constant="240" id="Ze2-wy-qcP"/>
@@ -29,24 +29,48 @@
                                 <items>
                                     <barButtonItem title="Pick from Album" id="wT2-At-IYN">
                                         <connections>
-                                            <action selector="pickAnImage:" destination="BYZ-38-t0r" id="e7p-o2-9pD"/>
+                                            <action selector="pickAnImageFromAlbum:" destination="BYZ-38-t0r" id="e7p-o2-9pD"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Take a Picture" id="lA2-j0-Cng"/>
+                                    <barButtonItem title="Take a Picture" id="lA2-j0-Cng">
+                                        <connections>
+                                            <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" id="JEm-F2-OpQ"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EYE-iL-Dpx">
+                                <rect key="frame" x="50" y="70" width="275" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XEd-2Q-Kwi">
+                                <rect key="frame" x="50" y="543" width="275" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="EUH-T4-qzS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="2C5-As-LCh"/>
                             <constraint firstItem="EUH-T4-qzS" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="5Ua-9t-iQ8"/>
                             <constraint firstItem="ETY-ma-lrP" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="9a7-2t-4VM"/>
+                            <constraint firstItem="EUH-T4-qzS" firstAttribute="top" secondItem="XEd-2Q-Kwi" secondAttribute="bottom" constant="50" id="MqH-KK-36Y"/>
                             <constraint firstItem="EUH-T4-qzS" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="SAn-TA-FMx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EYE-iL-Dpx" secondAttribute="trailing" constant="50" id="Wyz-JA-fuH"/>
+                            <constraint firstItem="EYE-iL-Dpx" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="YOT-7W-Jaa"/>
+                            <constraint firstItem="EYE-iL-Dpx" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="YwC-21-uPy"/>
                             <constraint firstItem="ETY-ma-lrP" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="n33-ef-1FB"/>
+                            <constraint firstItem="XEd-2Q-Kwi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="thy-8J-qF0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XEd-2Q-Kwi" secondAttribute="trailing" constant="50" id="u78-ec-NiW"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="albumButton" destination="wT2-At-IYN" id="SrR-Rc-I8p"/>
+                        <outlet property="cameraButton" destination="lA2-j0-Cng" id="4Iv-Gn-p8A"/>
                         <outlet property="imagePickerView" destination="ETY-ma-lrP" id="YAb-Me-NiK"/>
                     </connections>
                 </viewController>
