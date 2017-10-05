@@ -44,12 +44,37 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         bottomTextField.textAlignment = .center
         bottomTextField.delegate = self
         print("Inside viewDidLoad")
-        
-
-        
-
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        subscribeToKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        unsubscribeFromKeyboardNotifications
+    }
+    
+    func subscribeToKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
+    }
+    
+    func unsubscribeFromKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
+    }
+    
+    func keyboardWillShow(_ notification:Notification) {
+        view.frame.origin.y -= getKeyboardHeight(notification)
+    }
+    
+    func getKeyboardHeight(_ notification:Notification) -> CGFloat {
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIKeyboardFrameBeginUserInfoKey] as! NSValue  // of CGRect?
+        return keyboardSize.cgRectValue.height
+        print(keyboardSize)
+        print(keyboardSize.cgRectValue.height)
+    }
     
     //User selects to pick an image from the album
     @IBAction func pickAnImageFromAlbum(_ sender: Any) {
