@@ -40,7 +40,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         bottomTextField.text = "BOTTOM"
         bottomTextField.textAlignment = .center
         bottomTextField.delegate = self
-        print("Inside viewDidLoad")
+        imagePickerView.contentMode = .scaleAspectFit
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
