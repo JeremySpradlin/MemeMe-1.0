@@ -34,6 +34,10 @@ class ViewController: MemeTextAtrributes, UIImagePickerControllerDelegate, UINav
         bottomTextField.textAlignment = .center
         bottomTextField.delegate = self
         imagePickerView.contentMode = .scaleAspectFit
+        topTextField.borderStyle = UITextBorderStyle.none
+        topTextField.backgroundColor = UIColor.clear
+        bottomTextField.borderStyle = UITextBorderStyle.none
+        bottomTextField.backgroundColor = UIColor.clear
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
