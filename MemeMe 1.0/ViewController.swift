@@ -24,20 +24,25 @@ class ViewController: MemeTextAtrributes, UIImagePickerControllerDelegate, UINav
     //MARK:  Override functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        topTextField.defaultTextAttributes = memeTextAttributes
-        bottomTextField.defaultTextAttributes = memeTextAttributes
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
-        topTextField.text = "TOP"
+        
+        topTextField.defaultTextAttributes = memeTextAttributes
         topTextField.textAlignment = .center
-        self.topTextField.delegate = self
+        topTextField.text = "TOP"
+        topTextField.borderStyle = UITextBorderStyle.none
+        topTextField.backgroundColor = UIColor.clear
+        topTextField.delegate = self
+
+        bottomTextField.defaultTextAttributes = memeTextAttributes
+        bottomTextField.borderStyle = UITextBorderStyle.none
+        bottomTextField.backgroundColor = UIColor.clear
         bottomTextField.text = "BOTTOM"
         bottomTextField.textAlignment = .center
         bottomTextField.delegate = self
+        
         imagePickerView.contentMode = .scaleAspectFit
-        topTextField.borderStyle = UITextBorderStyle.none
-        topTextField.backgroundColor = UIColor.clear
-        bottomTextField.borderStyle = UITextBorderStyle.none
-        bottomTextField.backgroundColor = UIColor.clear
+
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
