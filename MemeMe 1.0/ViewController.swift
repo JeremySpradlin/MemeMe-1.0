@@ -52,9 +52,9 @@ class ViewController: MemeTextAtrributes, UIImagePickerControllerDelegate, UINav
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
     }
-//    override var prefersStatusBarHidden: Bool {
-//        return true
-//    }
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
     
     
     
