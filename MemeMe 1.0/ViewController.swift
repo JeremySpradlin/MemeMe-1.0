@@ -19,6 +19,8 @@ class ViewController: MemeTextAtrributes, UIImagePickerControllerDelegate, UINav
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     
     
     //MARK:  Override functions
@@ -31,14 +33,14 @@ class ViewController: MemeTextAtrributes, UIImagePickerControllerDelegate, UINav
         topTextField.text = "TOP"
         topTextField.borderStyle = UITextBorderStyle.none
         topTextField.backgroundColor = UIColor.clear
-        topTextField.delegate = self
+        topTextField.delegate = MemeTextFieldDelegate()
 
         bottomTextField.defaultTextAttributes = memeTextAttributes
         bottomTextField.borderStyle = UITextBorderStyle.none
         bottomTextField.backgroundColor = UIColor.clear
         bottomTextField.text = "BOTTOM"
         bottomTextField.textAlignment = .center
-        bottomTextField.delegate = self
+        bottomTextField.delegate = MemeTextFieldDelegate()
         
         imagePickerView.contentMode = .scaleAspectFit
 
@@ -117,15 +119,15 @@ class ViewController: MemeTextAtrributes, UIImagePickerControllerDelegate, UINav
         dismiss(animated: true, completion: nil)
     }
 
-    //Functions for text field delegate
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        print("Inside textFieldDidBeginEditing")
-        textField.text = ""
-    }
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
+//    //Functions for text field delegate
+//    func textFieldDidBeginEditing(_ textField: UITextField) {
+//        print("Inside textFieldDidBeginEditing")
+//        textField.text = ""
+//    }
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        textField.resignFirstResponder()
+//        return true
+//    }
 
     
 }

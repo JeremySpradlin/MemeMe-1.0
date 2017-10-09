@@ -85,7 +85,9 @@
                         <outlet property="albumButton" destination="wT2-At-IYN" id="SrR-Rc-I8p"/>
                         <outlet property="bottomTextField" destination="XEd-2Q-Kwi" id="awT-1W-iOS"/>
                         <outlet property="cameraButton" destination="lA2-j0-Cng" id="4Iv-Gn-p8A"/>
+                        <outlet property="cancelButton" destination="nLJ-nN-JHu" id="ASl-5B-bkt"/>
                         <outlet property="imagePickerView" destination="ETY-ma-lrP" id="YAb-Me-NiK"/>
+                        <outlet property="shareButton" destination="CdE-g0-hCj" id="PTj-sN-JZY"/>
                         <outlet property="topTextField" destination="EYE-iL-Dpx" id="Xmc-3q-tnl"/>
                     </connections>
                 </viewController>

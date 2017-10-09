@@ -13,6 +13,7 @@
 		F81B071C1F85142B005154BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F81B071A1F85142B005154BA /* Main.storyboard */; };
 		F81B071E1F85142B005154BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F81B071D1F85142B005154BA /* Assets.xcassets */; };
 		F81B07211F85142B005154BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F81B071F1F85142B005154BA /* LaunchScreen.storyboard */; };
+		F86C00021F8AFDDC0055AE5F /* MemeTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86C00011F8AFDDC0055AE5F /* MemeTextFieldDelegate.swift */; };
 		F86CFFFE1F8AFA610055AE5F /* MemeStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86CFFFD1F8AFA610055AE5F /* MemeStruct.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		F81B071D1F85142B005154BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F81B07201F85142B005154BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F81B07221F85142B005154BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F86C00011F8AFDDC0055AE5F /* MemeTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeTextFieldDelegate.swift; sourceTree = "<group>"; };
 		F86CFFFD1F8AFA610055AE5F /* MemeStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeStruct.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,6 +68,7 @@
 				F81B07221F85142B005154BA /* Info.plist */,
 				F806B1EF1F87201C0037BEB5 /* MemeTextAtrributes.swift */,
 				F86CFFFD1F8AFA610055AE5F /* MemeStruct.swift */,
+				F86C00011F8AFDDC0055AE5F /* MemeTextFieldDelegate.swift */,
 			);
 			path = "MemeMe 1.0";
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 			files = (
 				F86CFFFE1F8AFA610055AE5F /* MemeStruct.swift in Sources */,
 				F81B07191F85142B005154BA /* ViewController.swift in Sources */,
+				F86C00021F8AFDDC0055AE5F /* MemeTextFieldDelegate.swift in Sources */,
 				F806B1F01F87201C0037BEB5 /* MemeTextAtrributes.swift in Sources */,
 				F81B07171F85142B005154BA /* AppDelegate.swift in Sources */,
 			);
