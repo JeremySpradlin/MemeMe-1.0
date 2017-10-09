@@ -22,6 +22,8 @@ class ViewController: MemeTextAtrributes, UIImagePickerControllerDelegate, UINav
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     
+    let textFieldDelegate = MemeTextFieldDelegate()
+    
     
     //MARK:  Override functions
     override func viewDidLoad() {
@@ -33,14 +35,15 @@ class ViewController: MemeTextAtrributes, UIImagePickerControllerDelegate, UINav
         topTextField.text = "TOP"
         topTextField.borderStyle = UITextBorderStyle.none
         topTextField.backgroundColor = UIColor.clear
-        topTextField.delegate = MemeTextFieldDelegate()
+        topTextField.delegate = textFieldDelegate
 
         bottomTextField.defaultTextAttributes = memeTextAttributes
         bottomTextField.borderStyle = UITextBorderStyle.none
         bottomTextField.backgroundColor = UIColor.clear
         bottomTextField.text = "BOTTOM"
         bottomTextField.textAlignment = .center
-        bottomTextField.delegate = MemeTextFieldDelegate()
+        bottomTextField.delegate = textFieldDelegate
+        
         
         imagePickerView.contentMode = .scaleAspectFit
 
@@ -119,15 +122,6 @@ class ViewController: MemeTextAtrributes, UIImagePickerControllerDelegate, UINav
         dismiss(animated: true, completion: nil)
     }
 
-//    //Functions for text field delegate
-//    func textFieldDidBeginEditing(_ textField: UITextField) {
-//        print("Inside textFieldDidBeginEditing")
-//        textField.text = ""
-//    }
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        textField.resignFirstResponder()
-//        return true
-//    }
 
     
 }
