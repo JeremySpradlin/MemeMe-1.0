@@ -11,7 +11,7 @@ import AVFoundation
 import Photos
 
 
-class MemeEditor: MemeTextAtrributes, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class MemeEditorViewController: MemeTextAtrributes, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     //MARK: Outlet declaration
     @IBOutlet weak var imagePickerView: UIImageView!
