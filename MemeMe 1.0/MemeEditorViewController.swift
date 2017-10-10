@@ -30,7 +30,6 @@ class MemeEditorViewController: MemeTextAtrributes, UIImagePickerControllerDeleg
     //MARK:  Override functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         
         topTextField.defaultTextAttributes = memeTextAttributes
         topTextField.textAlignment = .center
@@ -54,6 +53,8 @@ class MemeEditorViewController: MemeTextAtrributes, UIImagePickerControllerDeleg
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        shareButton.isEnabled = imagePickerView.image != nil
         subscribeToKeyboardNotifications()
     }
     override func viewWillDisappear(_ animated: Bool) {
@@ -121,6 +122,12 @@ class MemeEditorViewController: MemeTextAtrributes, UIImagePickerControllerDeleg
 //        }
         save()
         present(activityController, animated: true, completion: nil)
+    }
+    @IBAction func cancelButton(_ sender: Any) {
+        topTextField.text = "TOP"
+        bottomTextField.text = "BOTTOM"
+        imagePickerView.image = nil
+        shareButton.isEnabled = false
     }
     
     

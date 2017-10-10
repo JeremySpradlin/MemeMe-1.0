@@ -54,7 +54,11 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="5vV-ll-Loe"/>
-                                    <barButtonItem title="Cancel" id="nLJ-nN-JHu"/>
+                                    <barButtonItem title="Cancel" id="nLJ-nN-JHu">
+                                        <connections>
+                                            <action selector="cancelButton:" destination="BYZ-38-t0r" id="r7k-2F-1rh"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XEd-2Q-Kwi">
