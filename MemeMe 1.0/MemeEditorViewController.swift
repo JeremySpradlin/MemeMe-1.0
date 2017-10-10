@@ -80,16 +80,16 @@ class MemeEditorViewController: MemeTextAtrributes, UIImagePickerControllerDeleg
 
     }
     @objc func keyboardWillShow(_ notification:Notification) {
-        view.frame.origin.y -= getKeyboardHeight(notification)
+        if bottomTextField.isFirstResponder {
+            view.frame.origin.y -= getKeyboardHeight(notification)
+        }
     }
     @objc func keyboardWillHide(_ notification:Notification) {
         view.frame.origin.y = 0
     }
     func getKeyboardHeight(_ notification:Notification) -> CGFloat {
         let userInfo = notification.userInfo
-        let keyboardSize = userInfo![UIKeyboardFrameBeginUserInfoKey] as! NSValue  // of CGRect?
-        print(keyboardSize)
-        print(keyboardSize.cgRectValue.height)
+        let keyboardSize = userInfo![UIKeyboardFrameBeginUserInfoKey] as! NSValue
         return keyboardSize.cgRectValue.height
     }
     
@@ -113,14 +113,14 @@ class MemeEditorViewController: MemeTextAtrributes, UIImagePickerControllerDeleg
     @IBAction func activityButton(_ sender: Any) {
         let meme = generateMemedImage()
         let activityController = UIActivityViewController(activityItems: [meme], applicationActivities: nil)
-//        activityController.completionWithItemsHandler = { activity, success, items, error in
-//
-//            if(success) {
-//                self.save()
-//                self.dismiss(animated: true, completion: nil)
-//            }
-//        }
-        save()
+        activityController.completionWithItemsHandler = { activity, success, items, error in
+
+            if(success) {
+                self.save()
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+        
         present(activityController, animated: true, completion: nil)
     }
     @IBAction func cancelButton(_ sender: Any) {
@@ -138,7 +138,6 @@ class MemeEditorViewController: MemeTextAtrributes, UIImagePickerControllerDeleg
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
         let image = info[UIImagePickerControllerOriginalImage] as? UIImage
         imagePickerView.image = image
-        print("Inside imagePickerController")
         dismiss(animated: true, completion: nil)
     }
 
@@ -156,7 +155,6 @@ class MemeEditorViewController: MemeTextAtrributes, UIImagePickerControllerDeleg
     //MARK: Save function for saving the meme
     func save() {
         _ = Meme(topTextField: topTextField.text!, bottomTextField: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: generateMemedImage())
-        print("Inside save function")
     }
 }
 
