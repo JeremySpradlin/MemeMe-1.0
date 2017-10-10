@@ -13,7 +13,8 @@ import Photos
 
 class MemeEditorViewController: MemeTextAtrributes, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
-    //MARK: Outlet declaration
+    //MARK: Variable declaration
+    //IBOutlet Declaration
     @IBOutlet weak var imagePickerView: UIImageView!
     @IBOutlet weak var albumButton: UIBarButtonItem!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
@@ -21,10 +22,8 @@ class MemeEditorViewController: MemeTextAtrributes, UIImagePickerControllerDeleg
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
-    
+    //Constant Declarations
     let textFieldDelegate = MemeTextFieldDelegate()
-    
-    //var memedImage = generateMemedImage()
     
     
     //MARK:  Override functions
@@ -45,11 +44,7 @@ class MemeEditorViewController: MemeTextAtrributes, UIImagePickerControllerDeleg
         bottomTextField.textAlignment = .center
         bottomTextField.delegate = textFieldDelegate
         
-        
         imagePickerView.contentMode = .scaleAspectFit
-        
-
-
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -96,7 +91,8 @@ class MemeEditorViewController: MemeTextAtrributes, UIImagePickerControllerDeleg
     
     
     
-    //MARK: Action functionsUser selects to pick an image from the album
+    //MARK: IBAction Functions
+    //Album function for selecting an image from the device album
     @IBAction func pickAnImageFromAlbum(_ sender: Any) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -110,11 +106,11 @@ class MemeEditorViewController: MemeTextAtrributes, UIImagePickerControllerDeleg
         imagePicker.sourceType = .camera
         self.present(imagePicker, animated: true, completion: nil)
     }
+    //Functino for when activity button is selected, calling the activityViewController
     @IBAction func activityButton(_ sender: Any) {
         let meme = generateMemedImage()
         let activityController = UIActivityViewController(activityItems: [meme], applicationActivities: nil)
         activityController.completionWithItemsHandler = { activity, success, items, error in
-
             if(success) {
                 self.save()
                 self.dismiss(animated: true, completion: nil)
@@ -123,6 +119,7 @@ class MemeEditorViewController: MemeTextAtrributes, UIImagePickerControllerDeleg
         
         present(activityController, animated: true, completion: nil)
     }
+    //Cancel function button, resets the UI to initial state
     @IBAction func cancelButton(_ sender: Any) {
         topTextField.text = "TOP"
         bottomTextField.text = "BOTTOM"
