@@ -30,19 +30,10 @@ class MemeEditorViewController: MemeTextAtrributes, UIImagePickerControllerDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        topTextField.defaultTextAttributes = memeTextAttributes
-        topTextField.textAlignment = .center
+        configureTextFields(textField: topTextField)
         topTextField.text = "TOP"
-        topTextField.borderStyle = UITextBorderStyle.none
-        topTextField.backgroundColor = UIColor.clear
-        topTextField.delegate = textFieldDelegate
-
-        bottomTextField.defaultTextAttributes = memeTextAttributes
-        bottomTextField.borderStyle = UITextBorderStyle.none
-        bottomTextField.backgroundColor = UIColor.clear
+        configureTextFields(textField: bottomTextField)
         bottomTextField.text = "BOTTOM"
-        bottomTextField.textAlignment = .center
-        bottomTextField.delegate = textFieldDelegate
         
         imagePickerView.contentMode = .scaleAspectFit
     }
@@ -146,6 +137,15 @@ class MemeEditorViewController: MemeTextAtrributes, UIImagePickerControllerDeleg
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return memedImage
+    }
+    
+    //Mark:  Configuring text fields function
+    func configureTextFields(textField: UITextField){
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.textAlignment = .center
+        textField.borderStyle = UITextBorderStyle.none
+        textField.backgroundColor = UIColor.clear
+        textField.delegate = textFieldDelegate
     }
     
     
