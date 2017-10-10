@@ -24,6 +24,8 @@ class MemeEditorViewController: MemeTextAtrributes, UIImagePickerControllerDeleg
     
     let textFieldDelegate = MemeTextFieldDelegate()
     
+    //var memedImage = generateMemedImage()
+    
     
     //MARK:  Override functions
     override func viewDidLoad() {
@@ -46,6 +48,7 @@ class MemeEditorViewController: MemeTextAtrributes, UIImagePickerControllerDeleg
         
         
         imagePickerView.contentMode = .scaleAspectFit
+        
 
 
     }
@@ -70,20 +73,17 @@ class MemeEditorViewController: MemeTextAtrributes, UIImagePickerControllerDeleg
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
     }
-    
     func unsubscribeFromKeyboardNotifications() {
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
 
     }
-    
     @objc func keyboardWillShow(_ notification:Notification) {
         view.frame.origin.y -= getKeyboardHeight(notification)
     }
     @objc func keyboardWillHide(_ notification:Notification) {
         view.frame.origin.y = 0
     }
-    
     func getKeyboardHeight(_ notification:Notification) -> CGFloat {
         let userInfo = notification.userInfo
         let keyboardSize = userInfo![UIKeyboardFrameBeginUserInfoKey] as! NSValue  // of CGRect?
@@ -109,6 +109,19 @@ class MemeEditorViewController: MemeTextAtrributes, UIImagePickerControllerDeleg
         imagePicker.sourceType = .camera
         self.present(imagePicker, animated: true, completion: nil)
     }
+    @IBAction func activityButton(_ sender: Any) {
+        let meme = generateMemedImage()
+        let activityController = UIActivityViewController(activityItems: [meme], applicationActivities: nil)
+//        activityController.completionWithItemsHandler = { activity, success, items, error in
+//
+//            if(success) {
+//                self.save()
+//                self.dismiss(animated: true, completion: nil)
+//            }
+//        }
+        save()
+        present(activityController, animated: true, completion: nil)
+    }
     
     
     
@@ -123,6 +136,20 @@ class MemeEditorViewController: MemeTextAtrributes, UIImagePickerControllerDeleg
     }
 
 
+    //MARK: Generate the meme image function
+    func generateMemedImage() -> UIImage {
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return memedImage
+    }
     
+    
+    //MARK: Save function for saving the meme
+    func save() {
+        _ = Meme(topTextField: topTextField.text!, bottomTextField: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: generateMemedImage())
+        print("Inside save function")
+    }
 }
 
