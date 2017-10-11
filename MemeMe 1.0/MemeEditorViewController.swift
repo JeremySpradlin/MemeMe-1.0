@@ -97,7 +97,7 @@ class MemeEditorViewController: MemeTextAtrributes, UIImagePickerControllerDeleg
         imagePicker.sourceType = .camera
         self.present(imagePicker, animated: true, completion: nil)
     }
-    //Functino for when activity button is selected, calling the activityViewController
+    //Functinon for when activity button is selected, calling the activityViewController
     @IBAction func activityButton(_ sender: Any) {
         let meme = generateMemedImage()
         let activityController = UIActivityViewController(activityItems: [meme], applicationActivities: nil)
@@ -117,8 +117,6 @@ class MemeEditorViewController: MemeTextAtrributes, UIImagePickerControllerDeleg
         imagePickerView.image = nil
         shareButton.isEnabled = false
     }
-    
-    
     
     
     //MARK: Delegate functions
