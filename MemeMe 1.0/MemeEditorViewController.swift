@@ -85,17 +85,11 @@ class MemeEditorViewController: MemeTextAtrributes, UIImagePickerControllerDeleg
     //MARK: IBAction Functions
     //Album function for selecting an image from the device album
     @IBAction func pickAnImageFromAlbum(_ sender: Any) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
-        self.present(imagePicker, animated: true, completion: nil)
+        pickAnImage(ofType: UIImagePickerControllerSourceType.photoLibrary)
     }
     //User selects to take a picture with the camera
     @IBAction func pickAnImageFromCamera(_ sender: Any) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .camera
-        self.present(imagePicker, animated: true, completion: nil)
+        pickAnImage(ofType: UIImagePickerControllerSourceType.camera)
     }
     //Functinon for when activity button is selected, calling the activityViewController
     @IBAction func activityButton(_ sender: Any) {
@@ -118,6 +112,13 @@ class MemeEditorViewController: MemeTextAtrributes, UIImagePickerControllerDeleg
         shareButton.isEnabled = false
     }
     
+    //MARK:  Function for Action buttons
+    func pickAnImage(ofType type: UIImagePickerControllerSourceType!) {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.sourceType = type
+        present(imagePickerController, animated: true, completion: nil)
+    }
     
     //MARK: Delegate functions
     //Function for Image Picker delegate
