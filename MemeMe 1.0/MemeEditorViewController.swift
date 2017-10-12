@@ -24,16 +24,16 @@ class MemeEditorViewController: MemeTextAtrributes, UIImagePickerControllerDeleg
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     //Constant Declarations
     let textFieldDelegate = MemeTextFieldDelegate()
+    let topText = "TOP"
+    let bottomText = "BOTTOM"
     
     
     //MARK:  Override functions
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureTextFields(textField: topTextField)
-        topTextField.text = "TOP"
-        configureTextFields(textField: bottomTextField)
-        bottomTextField.text = "BOTTOM"
+        configureTextFields(textField: topTextField, string: topText)
+        configureTextFields(textField: bottomTextField, string: bottomText)
         
         imagePickerView.contentMode = .scaleAspectFit
     }
@@ -139,12 +139,13 @@ class MemeEditorViewController: MemeTextAtrributes, UIImagePickerControllerDeleg
     }
     
     //Mark:  Configuring text fields function
-    func configureTextFields(textField: UITextField){
+    func configureTextFields(textField: UITextField, string: String!){
         textField.defaultTextAttributes = memeTextAttributes
         textField.textAlignment = .center
         textField.borderStyle = UITextBorderStyle.none
         textField.backgroundColor = UIColor.clear
         textField.delegate = textFieldDelegate
+        textField.text = string
     }
     
     
