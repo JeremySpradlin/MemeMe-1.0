@@ -32,8 +32,8 @@ class MemeEditorViewController: MemeTextAtrributes, UIImagePickerControllerDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureTextFields(textField: topTextField, string: topText)
-        configureTextFields(textField: bottomTextField, string: bottomText)
+        configureTextFields(textField: topTextField, text: topText)
+        configureTextFields(textField: bottomTextField, text: bottomText)
         
         imagePickerView.contentMode = .scaleAspectFit
     }
@@ -75,7 +75,7 @@ class MemeEditorViewController: MemeTextAtrributes, UIImagePickerControllerDeleg
     }
     func getKeyboardHeight(_ notification:Notification) -> CGFloat {
         let userInfo = notification.userInfo
-        let keyboardSize = userInfo![UIKeyboardFrameBeginUserInfoKey] as! NSValue
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
         return keyboardSize.cgRectValue.height
     }
     
@@ -85,11 +85,11 @@ class MemeEditorViewController: MemeTextAtrributes, UIImagePickerControllerDeleg
     //MARK: IBAction Functions
     //Album function for selecting an image from the device album
     @IBAction func pickAnImageFromAlbum(_ sender: Any) {
-        pickAnImage(ofType: UIImagePickerControllerSourceType.photoLibrary)
+        pickAnImage(ofType: .photoLibrary)
     }
     //User selects to take a picture with the camera
     @IBAction func pickAnImageFromCamera(_ sender: Any) {
-        pickAnImage(ofType: UIImagePickerControllerSourceType.camera)
+        pickAnImage(ofType: .camera)
     }
     //Functinon for when activity button is selected, calling the activityViewController
     @IBAction func activityButton(_ sender: Any) {
@@ -139,13 +139,13 @@ class MemeEditorViewController: MemeTextAtrributes, UIImagePickerControllerDeleg
     }
     
     //Mark:  Configuring text fields function
-    func configureTextFields(textField: UITextField, string: String!){
+    func configureTextFields(textField: UITextField, text: String!){
         textField.defaultTextAttributes = memeTextAttributes
         textField.textAlignment = .center
         textField.borderStyle = UITextBorderStyle.none
         textField.backgroundColor = UIColor.clear
         textField.delegate = textFieldDelegate
-        textField.text = string
+        textField.text = text
     }
     
     

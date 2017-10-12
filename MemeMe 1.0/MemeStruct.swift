@@ -6,7 +6,6 @@
 //  Copyright © 2017 Udacity. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 struct Meme {
